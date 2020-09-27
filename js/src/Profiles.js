@@ -27,8 +27,7 @@ function Roster(props) {
         // eslint-disable-next-line
         const hasMissing = Object.values(vals).some(v => v == "");
 
-        //if (!hasMissing) {
-        if (true) {
+        if (!hasMissing) {
             props.setProfiles(props.profiles.concat(vals));
             event.target.reset();
         }
@@ -48,6 +47,7 @@ function Roster(props) {
         );
     })
     const removeProfile = id => function (event) {
+        // eslint-disable-next-line
         props.setProfiles(props.profiles.filter(p => p.id != id))
         event.preventDefault();
     }

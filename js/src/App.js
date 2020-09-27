@@ -19,7 +19,7 @@ function App() {
     return (
         <div className="container">
             <header><Name storageKey="teamName" /></header>
-            <Tabs>
+            <Tabs defaultIndex={1}>
                 <TabList>
                     <Tab>Roster</Tab>
                     <Tab>Profiles</Tab>
