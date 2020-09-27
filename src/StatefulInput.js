@@ -1,5 +1,5 @@
 import UseLocalStorage from './UseLocalStorage';
-import React, {useState} from 'react';
+import React from 'react';
 
 function StatefulInput(props) {
     const [v, setV] = UseLocalStorage(props.storageKey, props.prompt);

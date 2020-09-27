@@ -1,6 +1,4 @@
-import React, {useState} from 'react';
-import sample_figure from './figure.jpg';
-import UseLocalStorage from './UseLocalStorage';
+import React from 'react';
 
 const attributes = [
     {'desc': "Name", 'type': 'text', key:"Name"},

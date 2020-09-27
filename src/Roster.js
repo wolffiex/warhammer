@@ -31,7 +31,7 @@ function Roster(props) {
     return (
         <div className="pure-g">
             <div className="pure-u-1-2">
-                <img src={sample_figure} className=".pure-img"/>
+                <img alt="placeholder" src={sample_figure} className=".pure-img"/>
             </div>
             <div className="pure-u-1-2">
                 <StatefulInput storageKey="characterName" />
@@ -41,7 +41,7 @@ function Roster(props) {
                 </label>
                 <select name="profile" id="profile">{
                     props.profiles.map(p => (
-                        <option value={p.Name}>{p.Name}</option>
+                        <option value={p.Name} key={p.Name}>{p.Name}</option>
                     ))}
                 </select>
                 </div>
