@@ -20,14 +20,14 @@ function Roster() {
     const getInputID= a => 'input-id-' + a.key;
     const [profiles, setProfiles] = useState([]);
     const addProfile = (event) => {
-        console.log(event.target);
         const els = event.target.elements
         const vals = attributes.reduce((acc, a) => {
             return { ...acc, [a.key]: els[getInputID(a)].value};
         }, {})
         console.log(vals)
-        setProfiles(profiles.push(vals));
+        setProfiles(profiles.concat(vals));
         event.preventDefault();
+        event.target.reset();
         return false;
     }
     const headers = attributes.map( a => <th>{a.desc}</th>);
@@ -46,6 +46,11 @@ function Roster() {
                 <thead>
                 <tr>{headers}</tr>
                 </thead>
+                <tbody>{
+                    profiles.map(p => <tr>{
+                        attributes.map( a => <td>{p[a.key == null ? '-' : a.key]}</td> )
+                    }</tr>)
+                }</tbody>
             </table>
             <h2>Add Profile:</h2>
             <form className="pure-form pure-form-aligned" onSubmit={addProfile}>
