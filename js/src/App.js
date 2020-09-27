@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React from 'react';
 import Roster from './Roster';
 import Profiles from './Profiles';
 import './App.css';
@@ -6,27 +6,25 @@ import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import 'react-tabs/style/react-tabs.css';
 import UseLocalStorage from './UseLocalStorage';
 
-function Name(props) {
-    const [name, setName] = UseLocalStorage(props.storageKey, "Enter Name");
-    const change = (event) => setName(event.target.value)
-    return (
-        <input className="team-name" id="teamname" name="teamname" value={name} onChange={change}/>
-    );
-}
-
 function App() {
-    const [profiles, setProfiles] = useState([]);
+    const [roster, setRoster] = UseLocalStorage("roster", []);
+    const [profiles, setProfiles] = UseLocalStorage("profiles", []);
+    const [name, setName] = UseLocalStorage("teamName", "Team Name");
+    //const storageKeys = ["profiles", "teamName", "roster"]
     return (
         <div className="container">
-            <header><Name storageKey="teamName" /></header>
-            <Tabs defaultIndex={1}>
+            <header>
+                <input className="team-name" value={name} 
+                       onChange={e=>setName(e.target.value)} />
+            </header>
+            <Tabs defaultIndex={0}>
                 <TabList>
                     <Tab>Roster</Tab>
                     <Tab>Profiles</Tab>
                     <Tab>Weapons</Tab>
                 </TabList>
                 <TabPanel>
-                    <Roster profiles={profiles} />
+                    <Roster profiles={profiles} roster={roster} setRoster={setRoster}/>
                 </TabPanel>
                 <TabPanel>
                     <Profiles profiles={profiles} setProfiles={setProfiles} />
