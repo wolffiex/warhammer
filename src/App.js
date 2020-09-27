@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
-import Roster from './roster';
+import Roster from './Roster';
+import Profiles from './Profiles';
 import './App.css';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import 'react-tabs/style/react-tabs.css';
@@ -20,13 +21,14 @@ function App() {
             <Tabs>
                 <TabList>
                     <Tab>Roster</Tab>
-                    <Tab>Roles</Tab>
+                    <Tab>Profiles</Tab>
                     <Tab>Weapons</Tab>
                 </TabList>
                 <TabPanel>
                     {Roster()}
                 </TabPanel>
-                <TabPanel>kk
+                <TabPanel>
+                    {Profiles()}
                 </TabPanel>
                 <TabPanel> jj
                 </TabPanel>
