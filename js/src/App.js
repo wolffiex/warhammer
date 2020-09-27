@@ -16,7 +16,6 @@ function Name(props) {
 
 function App() {
     const [profiles, setProfiles] = useState([]);
-    const addProfile = p => setProfiles(profiles.concat(p));
     return (
         <div className="container">
             <header><Name storageKey="teamName" /></header>
@@ -30,7 +29,7 @@ function App() {
                     <Roster profiles={profiles} />
                 </TabPanel>
                 <TabPanel>
-                    <Profiles profiles={profiles} addProfile={addProfile} />
+                    <Profiles profiles={profiles} setProfiles={setProfiles} />
                 </TabPanel>
                 <TabPanel> jj
                 </TabPanel>
