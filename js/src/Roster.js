@@ -54,6 +54,9 @@ function Character(props) {
                     Weapons:
                 </label>
                 <Weapons />
+                <button type="button" onClick={_ => props.remove(c.id)}>
+                    <span role="img" aria-label="x">❎</span>
+                </button>
             </div>
         </div></form>
     );
@@ -67,6 +70,8 @@ function Roster(props) {
     console.log('up', props.roster[0])
     const updateInfo = info => 
         props.setRoster(props.roster.map(c => c.id === info.id ? info : c));
+    const remove = id => 
+        props.setRoster(props.roster.filter(c => c.id !== id));
 
     return (<>
         <div><form onSubmit={addCharacter}>
@@ -74,7 +79,7 @@ function Roster(props) {
         </form></div>{
         props.roster.map(c => 
             <Character info={c} key={c.id} profiles={props.profiles}
-                       updateInfo={updateInfo}/>)
+                       updateInfo={updateInfo} remove={remove}/>)
         }
     </>);
 }
