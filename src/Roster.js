@@ -27,7 +27,7 @@ const Weapons = () => {
   );
 }
 
-function Roster() {
+function Roster(props) {
     return (
         <div className="pure-g">
             <div className="pure-u-1-2">
@@ -36,12 +36,13 @@ function Roster() {
             <div className="pure-u-1-2">
                 <StatefulInput storageKey="characterName" />
                 <div>
-                <label htmlFor="role">
-                    Role:
+                <label htmlFor="profile">
+                    Profile:
                 </label>
-                <select name="role" id="role">
-                    <option value="volvo">Commando</option>
-                    <option value="audi">Sniper</option>
+                <select name="profile" id="profile">{
+                    props.profiles.map(p => (
+                        <option value={p.Name}>{p.Name}</option>
+                    ))}
                 </select>
                 </div>
                 <label>

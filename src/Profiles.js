@@ -16,16 +16,15 @@ const attributes = [
 ];
 
 
-function Roster() {
+function Roster(props) {
     const getInputID= a => 'input-id-' + a.key;
-    const [profiles, setProfiles] = useState([]);
     const addProfile = (event) => {
         const els = event.target.elements
         const vals = attributes.reduce((acc, a) => {
             return { ...acc, [a.key]: els[getInputID(a)].value};
         }, {})
         console.log(vals)
-        setProfiles(profiles.concat(vals));
+        props.addProfile(vals);
         event.preventDefault();
         event.target.reset();
         return false;
@@ -34,7 +33,7 @@ function Roster() {
     const formContent = attributes.map( a => {
         const id = getInputID(a);
         return (
-            <div className="pure-control-group">
+            <div className="pure-control-group" key={id}>
                 <label htmlFor={id}>{a.desc}</label>
                 <input type={a.type} id={id} name={id}/>
             </div>
@@ -47,7 +46,7 @@ function Roster() {
                 <tr>{headers}</tr>
                 </thead>
                 <tbody>{
-                    profiles.map(p => <tr>{
+                    props.profiles.map(p => <tr>{
                         attributes.map( a => <td>{p[a.key == null ? '-' : a.key]}</td> )
                     }</tr>)
                 }</tbody>
