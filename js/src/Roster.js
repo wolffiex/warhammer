@@ -8,7 +8,6 @@ function Character(props) {
     const changeName = e => props.updateInfo({...c, name: e.target.value});
     const setProfile = e => props.updateInfo({...c, profile: e.target.value});
     const weapons = "weapons" in c ? c.weapons : [];
-    console.log("weaps", weapons)
     const setWeapons = e => props.updateInfo(
             {...c, weapons: [...e.target.selectedOptions].map(o => o.value)});
     return (
@@ -22,7 +21,7 @@ function Character(props) {
                        onChange={changeName}/>
                 <div>
                 <label htmlFor="profile">
-                    Profile:
+                    Type:
                 </label>
                 <select name="profile" value={c.profile} onChange={setProfile}>{
                     props.profiles.map(p => (
@@ -42,6 +41,18 @@ function Character(props) {
                 </select>
                 </div>
                 <div>
+                <label htmlFor="experience">
+                    Experience:
+                </label>
+                <input type="number" min={1} name="experience" />
+                </div>
+                <div>
+                <label htmlFor="specialism">
+                    Specialism:
+                </label>
+                <input type="text" name="specialism" />
+                </div>
+                <div>
                 <button type="button" onClick={_ => props.remove(c.id)}>
                     Remove <span role="img" aria-label="x">❎</span>
                 </button>
@@ -53,7 +64,7 @@ function Character(props) {
 
 function Roster(props) {
     const addCharacter = e => {
-        props.setRoster(props.roster.concat({id: uuidv4()}));
+        props.setRoster([{id: uuidv4()}, ...props.roster]);
         e.preventDefault();
     }
     const updateInfo = info => 

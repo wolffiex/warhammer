@@ -4,6 +4,7 @@ import { v4 as uuidv4 } from 'uuid';
 
 const attributes = [
     {'desc': "Name", 'type': 'text', key:"Name", hideKey:true, },
+    {'desc': "Points", 'type': 'number', key:"P", hideKey:true, },
     {'desc': "Move", 'type': 'number', key:"M"},
     {'desc': "Weapon Skill", 'type': 'number', key:"WS"},
     {'desc': "Balistic Skill", 'type': 'number', key:"BS"},
